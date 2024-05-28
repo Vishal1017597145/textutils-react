@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function Form(props) {
-  const [text, setText] = useState("Enter your text here");
+  const [text, setText] = useState("");
   const convertUpCase = () => {
     setText(text.toUpperCase());
     props.showAl("Converted to upper text", "success")
@@ -24,14 +24,14 @@ function Form(props) {
 
   return (
     <>
-      <div className="mb-3" style={{color: props.mode === "dark" ? "white" : "#007FFF"}}>
+      <div className="mb-3 mt-4" style={{color: props.mode === "dark" ? "white" : "#5A4FCF"}}>
         <h2>{props.heading}</h2>
         <textarea
           className="form-control"
           id="myBox"
           style={{
-            backgroundColor: props.mode === "dark" ? "#007FFF" : "white",
-            color: props.mode === "dark" ? "white" : "#007FFF",
+            backgroundColor: props.mode === "dark" ? "#5A4FCF" : "white",
+            color: props.mode === "dark" ? "white" : "#5A4FCF",
           }}
           rows="8"
           value={text}
@@ -65,11 +65,15 @@ function Form(props) {
       >
         Copy Text
       </button>
-      <div style={{color: props.mode === "dark" ? "white" : "#007FFF"}}>
+      <div style={{color: props.mode === "dark" ? "white" : "#5A4FCF"}}>
         <h2>Text Summary</h2>
         <p>
           {text.split(" ").filter((e)=>{return e.length !== 0}).length} words and {text.length} characters
         </p>
+      </div>
+      <div  style={{color: props.mode === "dark" ? "white" : "#5A4FCF"}}> 
+        <h2>Preview your Text</h2>
+        <p>{text.length > 0 ? text : "Nothing to preview! Enter something to preview"}</p>
       </div>
     </>
   );
